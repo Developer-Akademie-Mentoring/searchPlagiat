@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SearchPlagiat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="search">
+    <h1 class="search__title">SearchPlagiat</h1>
+    <p class="search__description">GitHub-Repository-URL eingeben und auf Plagiate prüfen</p>
+    <div class="search__box">
+      <input class="search__input" type="url" id="repoUrl" placeholder="https://github.com/user/repository" />
+      <button class="search__button" id="searchBtn">Suche Plagiat</button>
+    </div>
+    <div class="search__token-row">
+      <label class="search__token-label" for="githubToken">
+        GitHub Token <span class="search__optional">(optional)</span>
+      </label>
+      <input class="search__token-input" type="password" id="githubToken" placeholder="ghp_..." autocomplete="off" />
+    </div>
+    <div class="accordion">
+      <button class="accordion__toggle" id="tokenInfoBtn" type="button" aria-expanded="false">
+        <span>Was bringt ein GitHub Token?</span>
+        <span class="accordion__icon">▾</span>
+      </button>
+      <div class="accordion__content" id="tokenInfo">
+        <p><strong>Vorteile mit Token:</strong></p>
+        <ul>
+          <li>API-Limit: 10 → 30 Anfragen/Minute</li>
+          <li>Bis zu 8 statt 4 Funktionsnamen werden geprüft</li>
+          <li>Kürzere Wartezeit zwischen Anfragen (2,5 s statt 7 s)</li>
+          <li>Insgesamt deutlich schnellere und gründlichere Analyse</li>
+        </ul>
+        <p><strong>So erstellst du einen:</strong></p>
+        <ol>
+          <li>GitHub → Settings → Developer settings</li>
+          <li>Personal access tokens → Tokens (classic)</li>
+          <li>„Generate new token (classic)" klicken</li>
+          <li>Keine Berechtigungen nötig – direkt generieren</li>
+        </ol>
+        <p><strong>Beispiel:</strong></p>
+        <code>ghp_abc123XYZ456def789ghi0JKL</code>
+      </div>
+    </div>
+    <p class="search__info">
+      SearchPlagiat analysiert den Quellcode eines GitHub-Repos und vergleicht seine Funktionsnamen mit anderen öffentlichen Repositories. So lassen sich auffällige Übereinstimmungen erkennen – etwa kopierte Funktionen oder strukturell ähnliche Projekte.
+    </p>
+  </main>
+
+  <section class="results" id="results"></section>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+[2026-06-19] CREATE index.html, style.css, script.js -- leere Startdateien erstellt und miteinander verbunden
+9	[2026-06-19] EDIT index.html, style.css -- URL-Eingabefeld und 'Suche Plagiat'-Button hinzugefuegt, zentriert, BEM-Klassen verwendet
+10	[2026-06-19] EDIT index.html, style.css, script.js -- Plagiatsuche via GitHub API implementiert: URL-Parser, Dateibaum-Fetch, Funktionsnamen-Extraktion, Code-Search, Ergebnis-Anzeige; optionales Token-Feld mit Tooltip hinzugefuegt
+11	[2026-06-19] EDIT index.html, style.css -- Tooltip um Vorteils-Liste ergaenzt; Projektbeschreibung (.search__info) unterhalb der Eingaben hinzugefuegt
+12	[2026-06-19] EDIT index.html, style.css, script.js -- Tooltip durch Akkordeon ersetzt (ein-/aufklappbar, smooth transition)
+13	[2026-06-19] EDIT script.js -- 401-Fehlerbehandlung ergaenzt (Token ungueltig/abgelaufen)

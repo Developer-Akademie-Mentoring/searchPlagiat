@@ -1,0 +1,14 @@
+{ 
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(node:*)",
+      "Bash(npm:*)",
+      "Bash(python*:*)",
+      "Edit(./logs/debug.log)",
+      "Edit(./logs/**)"
+    ],
+    "deny": [] 
+  }
+} 
