@@ -258,6 +258,47 @@ body {
   flex-shrink: 0;
 }
 
+/* ── Pause / Resume ── */
+
+.results__pause {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.results__pause-text {
+  font-size: 0.9rem;
+  color: #7a5c00;
+}
+
+.results__resume-btn {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.results__resume-btn:hover:not(:disabled) {
+  background: #357abd;
+}
+
+.results__resume-btn:disabled {
+  background: #a0b9d8;
+  cursor: not-allowed;
+}
+
 /* ── Result card ── */
 
 .result-card {

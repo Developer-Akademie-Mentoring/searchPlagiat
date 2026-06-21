@@ -17,23 +17,17 @@
     </div>
     <div class="search__token-row">
       <label class="search__token-label" for="githubToken">
-        GitHub Token <span class="search__optional">(optional)</span>
+        GitHub Token <span class="search__optional">(erforderlich)</span>
       </label>
       <input class="search__token-input" type="password" id="githubToken" placeholder="ghp_..." autocomplete="off" />
     </div>
     <div class="accordion">
       <button class="accordion__toggle" id="tokenInfoBtn" type="button" aria-expanded="false">
-        <span>Was bringt ein GitHub Token?</span>
+        <span>Warum wird ein GitHub Token benötigt?</span>
         <span class="accordion__icon">▾</span>
       </button>
       <div class="accordion__content" id="tokenInfo">
-        <p><strong>Vorteile mit Token:</strong></p>
-        <ul>
-          <li>API-Limit: 10 → 30 Anfragen/Minute</li>
-          <li>Bis zu 8 statt 4 Funktionsnamen werden geprüft</li>
-          <li>Kürzere Wartezeit zwischen Anfragen (2,5 s statt 7 s)</li>
-          <li>Insgesamt deutlich schnellere und gründlichere Analyse</li>
-        </ul>
+        <p>Die App lädt den Quellcode des Repos über die GitHub API herunter und durchsucht anschließend GitHub nach ähnlichem Code. Beides erfordert einen Token – ohne ihn werden die meisten Anfragen abgelehnt.</p>
         <p><strong>So erstellst du einen:</strong></p>
         <ol>
           <li>GitHub → Settings → Developer settings</li>
@@ -46,7 +40,7 @@
       </div>
     </div>
     <p class="search__info">
-      SearchPlagiat analysiert den Quellcode eines GitHub-Repos und vergleicht seine Funktionsnamen mit anderen öffentlichen Repositories. So lassen sich auffällige Übereinstimmungen erkennen – etwa kopierte Funktionen oder strukturell ähnliche Projekte.
+      SearchPlagiat lädt den Quellcode eines GitHub-Repos herunter, sucht nach auffälligen Funktions- und Variablennamen (lang, individuell, human-like) und gleicht diese mit öffentlichen Repositories auf GitHub ab. Übereinstimmungen bei solchen Namen sind ein starkes Plagiat-Signal.
     </p>
   </main>
 

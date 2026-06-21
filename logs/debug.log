@@ -1,6 +1,12 @@
 [2026-06-19] CREATE index.html, style.css, script.js -- leere Startdateien erstellt und miteinander verbunden
-9	[2026-06-19] EDIT index.html, style.css -- URL-Eingabefeld und 'Suche Plagiat'-Button hinzugefuegt, zentriert, BEM-Klassen verwendet
-10	[2026-06-19] EDIT index.html, style.css, script.js -- Plagiatsuche via GitHub API implementiert: URL-Parser, Dateibaum-Fetch, Funktionsnamen-Extraktion, Code-Search, Ergebnis-Anzeige; optionales Token-Feld mit Tooltip hinzugefuegt
-11	[2026-06-19] EDIT index.html, style.css -- Tooltip um Vorteils-Liste ergaenzt; Projektbeschreibung (.search__info) unterhalb der Eingaben hinzugefuegt
-12	[2026-06-19] EDIT index.html, style.css, script.js -- Tooltip durch Akkordeon ersetzt (ein-/aufklappbar, smooth transition)
-13	[2026-06-19] EDIT script.js -- 401-Fehlerbehandlung ergaenzt (Token ungueltig/abgelaufen)
+[2026-06-19] EDIT index.html, style.css -- URL-Eingabefeld und 'Suche Plagiat'-Button hinzugefuegt, zentriert, BEM-Klassen verwendet
+[2026-06-19] EDIT index.html, style.css, script.js -- Plagiatsuche via GitHub API implementiert: URL-Parser, Dateibaum-Fetch, Funktionsnamen-Extraktion, Code-Search, Ergebnis-Anzeige; optionales Token-Feld mit Tooltip hinzugefuegt
+[2026-06-19] EDIT index.html, style.css -- Tooltip um Vorteils-Liste ergaenzt; Projektbeschreibung (.search__info) unterhalb der Eingaben hinzugefuegt
+[2026-06-19] EDIT index.html, style.css, script.js -- Tooltip durch Akkordeon ersetzt (ein-/aufklappbar, smooth transition)
+[2026-06-19] EDIT script.js -- 401-Fehlerbehandlung ergaenzt (Token ungueltig/abgelaufen)
+[2026-06-21] EDIT script.js, index.html -- Tokenlose Suche implementiert: neuer Pfad via searchWithoutToken() nutzt /search/repositories + direkten Funktionsnamen-Vergleich statt Code Search API; searchWithToken() extrahiert bisherige Token-Logik; Akkordeon-Text aktualisiert
+[2026-06-21] FIX script.js -- 422-Fehler behoben: "NOT repo:" ist kein gueltiger Operator fuer /search/repositories; Ausschluss des Quell-Repos wird jetzt nach dem Fetch per Filter erledigt
+[2026-06-21] IMPROVE script.js -- Plagiat-Erkennung verbessert: searchByRepoName() sucht zuerst nach gleichnamigen Repos; compareFileTrees() vergleicht Git-Blob-SHAs (identischer Inhalt); .html/.css zu CODE_EXTENSIONS hinzugefuegt; buildResultCard() zeigt jetzt identische Dateien und Pfad-Matches an; allNames=0-Check nur noch fuer Token-Pfad
+[2026-06-21] REWRITE script.js, index.html -- Kompletter Neubau: analyzeRepoFiles() laedt bis zu 15 Dateien per API; isHumanLike()/humanLikenessScore() erkennt individuell wirkende Namen; extractFunctionsFromCode() extrahiert Funktionen mit Koerper; extractVariablesFromCode() extrahiert Variablen; findPlagiarismMatches() sucht via /search/code; Token jetzt Pflichtfeld
+[2026-06-21] IMPROVE script.js, style.css -- Rate-Limit-Behandlung: runSearch() speichert Zustand bei 403; showPausedState() zeigt Zwischenergebnisse + 60s-Countdown; startCountdown() aktiviert Fortsetzen-Button nach Ablauf; continueSearch() setzt Suche nahtlos fort; CSS fuer Pause-Banner ergaenzt
+[2026-06-21] REFACTOR script.js -- Funktionslaengen auf ~14 Zeilen reduziert: buildFunctionEntry() aus extractFunctionsFromCode() ausgegliedert; fetchCodeFiles() + extractFromFile() aus analyzeRepoFiles() ausgegliedert; processSearchResult() aus runSearch() ausgegliedert; activateResumeButton() aus startCountdown() ausgegliedert; buildReasonSection() aus buildResultCard() ausgegliedert; getSearchInputs() aus searchPlagiarism() ausgegliedert; JSDoc fuer alle Funktionen ergaenzt
