@@ -4,13 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SearchPlagiat</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/search.svg">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/review.css">
+  <link rel="stylesheet" href="css/results.css">
+  <link rel="stylesheet" href="css/dialog.css">
 </head>
 <body>
 
   <main class="search">
     <h1 class="search__title">SearchPlagiat</h1>
     <p class="search__description">GitHub-Repository-URL eingeben und auf Plagiate prüfen</p>
+    <button class="search__info-btn" id="infoBtn" type="button"><span class="icon icon--info"></span> Wie funktioniert die Suche?</button>
     <div class="search__box">
       <input class="search__input" type="url" id="repoUrl" placeholder="https://github.com/user/repository" />
       <button class="search__button" id="searchBtn">Suche Plagiat</button>
@@ -24,7 +29,7 @@
     <div class="accordion">
       <button class="accordion__toggle" id="tokenInfoBtn" type="button" aria-expanded="false">
         <span>Warum wird ein GitHub Token benötigt?</span>
-        <span class="accordion__icon">▾</span>
+        <span class="accordion__icon icon icon--expand-more"></span>
       </button>
       <div class="accordion__content" id="tokenInfo">
         <p>Die App lädt den Quellcode des Repos über die GitHub API herunter und durchsucht anschließend GitHub nach ähnlichem Code. Beides erfordert einen Token – ohne ihn werden die meisten Anfragen abgelehnt.</p>
@@ -40,12 +45,64 @@
       </div>
     </div>
     <p class="search__info">
-      SearchPlagiat lädt den Quellcode eines GitHub-Repos herunter, sucht nach auffälligen Funktions- und Variablennamen (lang, individuell, human-like) und gleicht diese mit öffentlichen Repositories auf GitHub ab. Übereinstimmungen bei solchen Namen sind ein starkes Plagiat-Signal.
+      SearchPlagiat lädt den Quellcode eines GitHub-Repos herunter, sucht nach auffälligen Funktionsnamen (lang, individuell, human-like) und gleicht diese mit öffentlichen Repositories auf GitHub ab. Übereinstimmungen bei solchen Namen sind ein starkes Plagiat-Signal.
     </p>
   </main>
 
+  <dialog class="info-dialog" id="infoDialog">
+    <div class="info-dialog__content">
+      <button class="info-dialog__close" id="infoDialogClose" type="button" aria-label="Schließen"><span class="icon icon--close"></span></button>
+      <h2 class="info-dialog__title">Wie funktioniert SearchPlagiat?</h2>
+      <ol class="info-dialog__steps">
+        <li>
+          <strong>Repo-Analyse.</strong> Es werden bis zu 15 Code-Dateien aus dem angegebenen Repository geladen. Darin
+          werden Funktionsnamen gesucht, die „menschlich" wirken – also individuell und nicht generisch (z.B.
+          <code>calculateShippingCost</code> statt <code>get</code> oder <code>data</code>). Die 15 auffälligsten
+          Funktionen werden vorgeschlagen.
+        </li>
+        <li>
+          <strong>Auswahl.</strong> Du siehst diese Vorschläge als Checkboxen und kannst einzelne abwählen, die nicht
+          durchsucht werden sollen. Zusätzlich kannst du eigene Funktionsnamen manuell ergänzen – diese werden bei der
+          Suche zuerst geprüft. <strong>Tipp:</strong> Je weniger Funktionen gesucht werden, desto unwahrscheinlicher
+          findet man ein Ergebnis – suche lieber nach vielen Funktionen.
+        </li>
+        <li>
+          <strong>GitHub-Suche.</strong> Für jeden bestätigten Namen wird über GitHubs Code-Search-API nach anderen
+          öffentlichen Repositories gesucht, die exakt diesen Namen enthalten. Wegen eines sehr strengen API-Limits liegt
+          zwischen den Anfragen eine kurze Pause; wird das Limit trotzdem erreicht, pausiert die Suche automatisch und du
+          kannst nach einer Wartezeit fortsetzen.
+        </li>
+        <li>
+          <strong>Ergebnisse.</strong> Gefundene Repositories werden nach Anzahl der Übereinstimmungen sortiert. Jede
+          Ergebnis-Karte zeigt die übereinstimmenden Funktionen (mit aufklappbarem Code-Vergleich: dein Code neben dem
+          Code aus dem gefundenen Repo), sowie geprüfte, aber nicht gefundene Namen in einem einklappbaren Bereich – auch
+          dort lässt sich der Code aufklappen und bei Bedarf gezielt im gesamten Repo nachsuchen.
+        </li>
+        <li>
+          <strong>Detail Check.</strong> GitHubs Suche hat Grenzen: sie schließt Forks aus, liefert pro Suchbegriff nur
+          die ersten 10 Treffer und indexiert keine Dateien über 384 KB. Deshalb kannst du pro Repo einen „Detail
+          Check" auslösen – dabei wird der tatsächliche Code dieses einen Repos komplett direkt geladen (alle
+          Code-Dateien) und lokal geprüft, ob die noch offenen Namen dort vorkommen, unabhängig von GitHubs Such-Index.
+        </li>
+      </ol>
+      <p class="info-dialog__note">
+        <strong>Wichtig:</strong> Die automatische Erkennung ist ein Kandidaten-Filter, kein Beweis. „Kein Treffer"
+        bedeutet nicht zwangsläufig, dass der Code nirgendwo existiert. Der Code-Vergleich in den Ergebnissen dient dazu,
+        dass du dir selbst ein abschließendes Bild machen kannst.
+      </p>
+    </div>
+  </dialog>
+
+  <section class="review" id="review"></section>
+
   <section class="results" id="results"></section>
 
-  <script src="script.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/extraction.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="js/review.js"></script>
+  <script src="js/init.js"></script>
 </body>
 </html>

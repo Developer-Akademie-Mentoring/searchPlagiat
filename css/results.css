@@ -1,0 +1,265 @@
+/* ── Results section ── */
+
+.results {
+  max-width: 900px;
+  width: 100%;
+  margin-top: 28px;
+}
+
+.results__title {
+  font-size: 1.15rem;
+  color: #1a1a2e;
+  margin-bottom: 16px;
+}
+
+.results__loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #555;
+  font-size: 0.95rem;
+  padding: 20px 0;
+}
+
+.results__error {
+  color: #c0392b;
+  background: #fdecea;
+  border: 1px solid #f5c6c2;
+  border-radius: 8px;
+  padding: 14px 18px;
+  font-size: 0.9rem;
+}
+
+.results__empty {
+  color: #888;
+  font-size: 0.95rem;
+  padding: 20px 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.results__spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ddd;
+  border-top-color: #4a90e2;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ── Pause / Resume ── */
+
+.results__pause {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 8px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.results__pause-text {
+  font-size: 0.9rem;
+  color: #7a5c00;
+}
+
+.results__resume-btn {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+
+.results__resume-btn:hover:not(:disabled) {
+  background: #357abd;
+}
+
+.results__resume-btn:disabled {
+  background: #a0b9d8;
+  cursor: not-allowed;
+}
+
+/* ── Result card ── */
+
+.result-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.result-card__rank {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #aaa;
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+.result-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.result-card__link {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #4a90e2;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.result-card__link:hover {
+  text-decoration: underline;
+}
+
+.result-card__description {
+  color: #666;
+  font-size: 0.85rem;
+  margin: 6px 0 10px;
+}
+
+.result-card__reason {
+  font-size: 0.85rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.result-card__tag {
+  display: inline-block;
+  background: #eef4fd;
+  color: #2a6db5;
+  border-radius: 4px;
+  padding: 1px 7px;
+  font-size: 0.78rem;
+  font-family: monospace;
+  margin: 2px 2px 0 0;
+}
+
+.result-card__unmatched {
+  margin-top: 10px;
+}
+
+.result-card__unmatched .accordion__toggle {
+  font-size: 0.78rem;
+  padding: 7px 10px;
+}
+
+.result-card__unmatched .accordion__content--open {
+  max-height: 400px;
+  padding: 10px;
+}
+
+/* ── Function match compare ── */
+
+.result-card__functions {
+  margin-bottom: 8px;
+}
+
+.function-match {
+  margin-top: 6px;
+}
+
+.function-match__toggle {
+  font-size: 0.82rem;
+  padding: 6px 10px;
+}
+
+.function-match__content.accordion__content--open {
+  max-height: 700px;
+  padding: 10px;
+}
+
+.function-match__label {
+  font-size: 0.78rem;
+  color: #888;
+  font-weight: bold;
+  margin: 10px 0 4px;
+}
+
+.function-match__label:first-child {
+  margin-top: 0;
+}
+
+.function-match__code {
+  background: #1e1e2e;
+  color: #e2e2e2;
+  font-family: monospace;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  padding: 10px;
+  border-radius: 6px;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+}
+
+/* ── Detail check ── */
+
+.result-card__detail-check {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.result-card__detail-btn {
+  padding: 7px 14px;
+  font-size: 0.78rem;
+  background: #f7f8fa;
+  color: #4a90e2;
+  border: 1px solid #e4e6ea;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.result-card__detail-btn:hover:not(:disabled) {
+  background: #eef2f8;
+}
+
+.result-card__detail-btn:disabled {
+  color: #999;
+  cursor: not-allowed;
+}
+
+.result-card__detail-status {
+  font-size: 0.78rem;
+  color: #999;
+  margin-top: 10px;
+}
+
+.result-card__detail-status--error {
+  color: #b06a00;
+}
+
+.result-card__detail-spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 7px;
+  border: 2px solid #cfe0f5;
+  border-top-color: #4a90e2;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  vertical-align: middle;
+}
